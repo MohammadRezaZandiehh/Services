@@ -24,19 +24,19 @@ public class MyIntentService extends IntentService {
         String username = intent.getExtras().getString("key");
 
         Log.d("service", "onHandleIntent: " + Thread.currentThread().getName());
+        Intent localIntent = new Intent("com.example.action.service");
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 5; i >= 0; i--) {
             try {
                 Thread.sleep(1000);
                 Log.d("service", "work: #" + i + " " + Thread.currentThread().getName());
-                
+                localIntent.putExtra("key", i);
+                LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);                         //LocalBroadcastManager: send message to all local component in my app
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }                                                                                           //this block : get and put data from service.
-        Intent localIntent = new Intent("com.example.action.service");
-        localIntent.putExtra("key", true);
-        LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);                         //LocalBroadcastManager: send message to all local component in my app
     }                                                                                               // 3 khate bala : jaavbe service baraye view moon.
 
     @Override

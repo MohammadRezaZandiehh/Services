@@ -28,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
         broadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {                                 //when send each message , this method is called.
-                Toast.makeText(context, "done!", Toast.LENGTH_SHORT).show();
+                int value = intent.getExtras().getInt("key");
+                textViewCounter.setText(  "کار شما در " + value + " دیگر تمام میشود");
             }
         };
         buttonStartService.setOnClickListener(new View.OnClickListener() {

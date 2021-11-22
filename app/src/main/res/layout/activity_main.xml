@@ -40,7 +40,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="TextView"
         app:layout_constraintEnd_toEndOf="@+id/buttonStop"
         app:layout_constraintStart_toStartOf="@+id/buttonStop"
         app:layout_constraintTop_toBottomOf="@+id/buttonStop"
