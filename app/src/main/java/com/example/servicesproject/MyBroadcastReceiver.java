@@ -8,8 +8,10 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)){
-            Intent intentService = new Intent(context, MyService.class);
-            context.startService(intentService);
+            Intent intentService = new Intent(context, MyJobIntentService.class);
+            MyJobIntentService.setWorker(context, intentService);
+
+//            context.startService(intentService);
         }
     }
 }
