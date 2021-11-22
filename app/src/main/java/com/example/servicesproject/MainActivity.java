@@ -20,7 +20,10 @@ public class MainActivity extends AppCompatActivity {
         buttonStartService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,MyService.class);
+//                Intent intent = new Intent(MainActivity.this,MyService.class);
+//                startService(intent);
+
+                Intent intent = new Intent(MainActivity.this,MyIntentService.class);
                 startService(intent);
             }
         });
@@ -29,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         buttonStopService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,MyService.class);
-                stopService(intent);
+//                Intent intent = new Intent(MainActivity.this,MyService.class);
+//                stopService(intent);
             }
         });
     }
