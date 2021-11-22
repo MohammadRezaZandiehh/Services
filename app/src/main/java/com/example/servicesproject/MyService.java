@@ -1,47 +1,40 @@
 package com.example.servicesproject;
 
-import android.app.Service;
+import android.app.IntentService;
 import android.content.Intent;
-import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-public class MyService extends Service {
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
+public class MyService extends IntentService {
+
+    public MyService() {
+        super("MyIntentThread");
     }
 
     @Override
-    public void onCreate() {                                                                        //initialize method or build service and this method call just once.
+    public void onCreate() {
         super.onCreate();
-        Log.d("service", "onCreate");
+        Toast.makeText(this, "Series started", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {                              //when we want call service , we use this method.
-        Log.d("service", "onStartCommand");
-        for (int i = 0; i < 10; i++) {
+    protected void onHandleIntent(@Nullable Intent intent) {
+        for (int i = 1; i < 3; i++) {
             try {
                 Thread.sleep(1000);
-                Log.d("service", "onStartCommand: work# " + i);
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        return super.onStartCommand(intent, flags, startId);
-
+        Log.d("tagx", "onHandleIntent: service is done! ");
     }
-
 
     @Override
-    public void onDestroy() {                                                                       //when service doing its works and it's will destroying.
+    public void onDestroy() {
         super.onDestroy();
-        Log.d("service", "onDestroy");
-
+        Toast.makeText(this, "service destroyed", Toast.LENGTH_SHORT).show();
     }
-
 }
